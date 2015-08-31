@@ -20,9 +20,7 @@ Git查看、删除、重命名远程分支和tag: http://zengrong.net/post/1746.
 更多请看本文评论，欢迎来盖楼！
 
 <!-- Blog Comments -->
-<!--
 <div class="media">
- 
   <!-- UY BEGIN -->
 <!--
   <div id="uyan_frame">
@@ -31,6 +29,4 @@ Git查看、删除、重命名远程分支和tag: http://zengrong.net/post/1746.
   </script>
  -->
   <!-- UY END -->
-<!--
 </div>
--->
