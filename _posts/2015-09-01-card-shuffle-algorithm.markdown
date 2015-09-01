@@ -24,7 +24,6 @@ tags: [洗牌算法,ios]
     for (index = 0; index < dataSource.count; index++) {
 
         value = arc4random()%dataSource.count;
-        NSLog(@"value=%d", value);
         median = [dataSource[index]intValue];
         dataSource[index] = dataSource[value];
         dataSource[value] = [NSNumber numberWithInt:median];
