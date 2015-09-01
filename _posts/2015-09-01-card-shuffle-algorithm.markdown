@@ -10,7 +10,7 @@ tags: [洗牌算法,ios]
 
 代码如下所示:
 
-+ (void)defaultShuffleWithArray:(NSMutableArray *)dataSource
++ (void)defaultShuffleWithArray:(NSMutableArray *)dataSource  
 {
     int index;
     int value;
