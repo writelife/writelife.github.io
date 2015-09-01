@@ -13,24 +13,22 @@ tags: [洗牌算法,ios]
 <pre><code>
 + (void)defaultShuffleWithArray:(NSMutableArray *)dataSource
 {
-int index;
-int value;
-int median;
+    int index;
+    int value;
+    int median;
 
-if (dataSource.count==0) {
-return;
-}
-//    srand((unsigned) time(NULL));
+    if (dataSource.count==0) {
+        return;
+    }
 
-for (index = 0; index < dataSource.count; index++) {
+    for (index = 0; index < dataSource.count; index++) {
 
-//        value = rand()% dataSource.count;
-value = arc4random()%dataSource.count;
-NSLog(@"value=%d", value);
-median = [dataSource[index]intValue];
-dataSource[index] = dataSource[value];
-dataSource[value] = [NSNumber numberWithInt:median];
+        value = arc4random()%dataSource.count;
+        NSLog(@"value=%d", value);
+        median = [dataSource[index]intValue];
+        dataSource[index] = dataSource[value];
+        dataSource[value] = [NSNumber numberWithInt:median];
 
-}
+    }
 }
 </pre></code>
