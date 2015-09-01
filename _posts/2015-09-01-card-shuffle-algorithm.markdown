@@ -10,21 +10,27 @@ tags: [洗牌算法,ios]
 
 代码如下所示:
 
-+ (void)defaultShuffleWithArray:(NSMutableArray *)dataSource  
-{  
-    int index;  
-    int value;  
-    int median;  
+<pre><code>
++ (void)defaultShuffleWithArray:(NSMutableArray *)dataSource
+{
+int index;
+int value;
+int median;
 
-    if (dataSource.count==0) {  
-        return;  
-    }  
-  
-    for (index = 0; index < dataSource.count; index++) {  
-  
-        value = arc4random()%dataSource.count;  
-        median = [dataSource[index]intValue];  
-        dataSource[index] = dataSource[value];  
-        dataSource[value] = [NSNumber numberWithInt:median];  
-    }  
+if (dataSource.count==0) {
+return;
 }
+//    srand((unsigned) time(NULL));
+
+for (index = 0; index < dataSource.count; index++) {
+
+//        value = rand()% dataSource.count;
+value = arc4random()%dataSource.count;
+NSLog(@"value=%d", value);
+median = [dataSource[index]intValue];
+dataSource[index] = dataSource[value];
+dataSource[value] = [NSNumber numberWithInt:median];
+
+}
+}
+</pre></code>
