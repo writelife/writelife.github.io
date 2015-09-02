@@ -8,7 +8,7 @@ tags: [html解析,ios]
 文件必须到沙盒下取,在cocoa下使用好些...
 
 这里直接使用了TFHpple包进行html解析,代码如下:
-```java
+```
 #import "ViewController.h"
 #import <TFHpple.h>
 
@@ -20,51 +20,52 @@ tags: [html解析,ios]
 @synthesize uaArray;
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+[super viewDidLoad];
 
-    [self myUAXMLCreate];
+[self myUAXMLCreate];
 }
 
 - (void)htmlParser{
 
-    NSString *htmlString = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"https://techblog.willshouse.com/2012/01/03/most-common-user-agents/"] encoding:NSUTF8StringEncoding error:nil];
-    NSData *htmlData = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
-    TFHpple *xpathParser = [[TFHpple alloc]initWithHTMLData:htmlData];
-    NSArray *elements = [xpathParser searchWithXPathQuery:@"//textarea"];
-    TFHppleElement *element = [elements objectAtIndex:0];
-    NSString *uaText = [[element firstTextChild]content];
-    NSLog(@"%@", uaText);
+NSString *htmlString = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"https://techblog.willshouse.com/2012/01/03/most-common-user-agents/"] encoding:NSUTF8StringEncoding error:nil];
+NSData *htmlData = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
+TFHpple *xpathParser = [[TFHpple alloc]initWithHTMLData:htmlData];
+NSArray *elements = [xpathParser searchWithXPathQuery:@"//textarea"];
+TFHppleElement *element = [elements objectAtIndex:0];
+NSString *uaText = [[element firstTextChild]content];
+NSLog(@"%@", uaText);
 
-    uaArray = [uaText componentsSeparatedByString:@"\n" ];
+uaArray = [uaText componentsSeparatedByString:@"\n" ];
 
 }
 
 - (void)myUAXMLCreate{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *saveDirectory = [paths objectAtIndex:0];
-    NSString *saveFileName = @"ua.xml";
-    NSString *filePath = [saveDirectory stringByAppendingPathComponent:saveFileName];
+NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+NSString *saveDirectory = [paths objectAtIndex:0];
+NSString *saveFileName = @"ua.xml";
+NSString *filePath = [saveDirectory stringByAppendingPathComponent:saveFileName];
 
-    NSMutableString *xmlString = [[NSMutableString alloc]initWithString:@"<useragentswitcher>"];
+NSMutableString *xmlString = [[NSMutableString alloc]initWithString:@"<useragentswitcher>"];
 
-    [xmlString appendString:@"<folder description=\"UA-Top\">"];
+[xmlString appendString:@"<folder description=\"UA-Top\">"];
 
-    [self htmlParser];
-    int index = 0;
+[self htmlParser];
+int index = 0;
 
-    for (NSString *str in uaArray) {
+for (NSString *str in uaArray) {
 
-    NSString *tempStr = [NSString stringWithFormat:@"<useragent description=\"%d\" badge=\"%d\" useragent=\"%@\" appcodename=\"\" appname=\"\" appversion=\"\" platform=\"\" vendor=\"\" vendorsub=\"\" />", index, index, str];
-    [xmlString appendString:tempStr];
-    index++;
-
-    }
-
-    [xmlString appendString:@"</folder>"];
-    [xmlString appendString:@"</useragentswitcher>"];
-
-    NSLog(@"filePath=%@", filePath);
-    [xmlString writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+NSString *tempStr = [NSString stringWithFormat:@"<useragent description=\"%d\" badge=\"%d\" useragent=\"%@\" appcodename=\"\" appname=\"\" appversion=\"\" platform=\"\" vendor=\"\" vendorsub=\"\" />", index, index, str];
+[xmlString appendString:tempStr];
+index++;
 
 }
+
+[xmlString appendString:@"</folder>"];
+[xmlString appendString:@"</useragentswitcher>"];
+
+NSLog(@"filePath=%@", filePath);
+[xmlString writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+
+}
+
 ```
