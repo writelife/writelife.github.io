@@ -9,8 +9,8 @@ tags: [html解析,ios]
 
 这里直接使用了TFHpple包进行html解析,代码如下:
 <pre><code>
-#import "ViewController.h"
-#import &ltTFHpple.h&gt
+\#import "ViewController.h"
+\#import <TFHpple.h>
 
 @interface ViewController ()
 @property(nonatomic, strong)NSArray *uaArray;
