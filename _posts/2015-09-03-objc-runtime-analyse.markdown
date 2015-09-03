@@ -5,15 +5,6 @@ title:  "objc之runtime源码分析"
 tags: [objc,runtime]
 ---
 
-{% highlight c %}
-/* hello world demo */
-#include <stdio.h>
-int main(int argc, char **argv)
-{
-printf("Hello, World!\n");
-return 0;
-}
-{% endhighlight %}
 
 /// An opaque type that represents a method in a class definition.  
 typedef struct objc_method *Method;//objc_method结构体指针
