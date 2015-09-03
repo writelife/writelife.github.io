@@ -28,6 +28,6 @@ Note: 编译器完成对objc_msgSend方法的转换, 请不要在代码里直接
 
 
 每个对象都有一个指向所属类的指针isa。通过该指针，对象可以找到它所属的类，也就找到了其全部父类，如下图所示:  
-
+<center>
 ![](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Art/messaging1.gif)
-
+</center>
