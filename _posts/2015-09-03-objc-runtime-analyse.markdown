@@ -1,13 +1,12 @@
-<link rel="stylesheet" href="/path/to/styles/default.css">
-<script src="/path/to/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
 ---
 layout: post
 category: "objc"
 title:  "objc之runtime源码分析"
 tags: [objc,runtime]
 ---
-
+<link rel="stylesheet" href="/path/to/styles/default.css">
+<script src="/path/to/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 /* Types */
 
 /// An opaque type that represents a method in a class definition.  
