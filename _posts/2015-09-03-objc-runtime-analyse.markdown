@@ -7,6 +7,7 @@ tags: [objc,runtime]
 <link rel="stylesheet" href="/path/to/styles/default.css">
 <script src="/path/to/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+<pre><code class="Objective C">
 /* Types */
 
 /// An opaque type that represents a method in a class definition.  
@@ -21,7 +22,7 @@ typedef struct objc_category *Category;
 /// An opaque type that represents an Objective-C declared property.  
 typedef struct objc_property *objc_property_t;  
 
-
+</code></pre>
 
 
 
