@@ -6,17 +6,17 @@ tags: [objc,runtime]
 ---
 /* Types */
 
-/// An opaque type that represents a method in a class definition.
+/// An opaque type that represents a method in a class definition.  
 typedef struct objc_method *Method;
 
-/// An opaque type that represents an instance variable.
+/// An opaque type that represents an instance variable.  
 typedef struct objc_ivar *Ivar;
 
-/// An opaque type that represents a category.
+/// An opaque type that represents a category.  
 typedef struct objc_category *Category;
 
-/// An opaque type that represents an Objective-C declared property.
-typedef struct objc_property *objc_property_t;
+/// An opaque type that represents an Objective-C declared property.  
+typedef struct objc_property *objc_property_t;  
 
 
 
