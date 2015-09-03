@@ -12,6 +12,7 @@ objc_msgSend方法包含两个主要参数：receiver, 选择器即(SEL) selecto
 消息包含的参数也被一起传递给objc_msgSend，如:
 objc_msgSend(receiver, selector, arg1, arg2, …);
 ```
+
 objc_msgSend方法完成必要的一切来完成动态绑定
 ```
 1.首先查找选择器指向的子程序(方法实现)。因为不同类对同一方法有不同的实现，所以对方法的真正实现的查找依赖于receiver的类  
@@ -25,6 +26,8 @@ Note: 编译器完成对objc_msgSend方法的转换, 请不要在代码里直接
 1.一个指向超类的指针
 2.一个类调度表, 这个表包含了与之关联的方法选择器的入口地址
 ```
-每个对象都有一个指向所属类的指针isa。通过该指针，对象可以找到它所属的类，也就找到了其全部父类，如下图所示：
 
+每个对象都有一个指向所属类的指针isa。通过该指针，对象可以找到它所属的类，也就找到了其全部父类，如下图所示:  
+
+![](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Art/messaging1.gif)
 
