@@ -38,7 +38,7 @@ Note: 编译器完成对objc\_msgSend方法的转换, 请不要在代码里直�
 缓存命中的情况下，消息发送（messaging）比直接调用方法（function call）只慢一点点。
 
 下面就显式使用objc_msgSend来验证一下,代码如下:  
-![#import \<Foundation/Foundation.h&gt]
+#import \<Foundation/Foundation.h\>
 
 ```
 int main(int argc, const char * argv[]) {
