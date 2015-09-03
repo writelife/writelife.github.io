@@ -5,7 +5,7 @@ title:  "objc之runtime源码分析"
 tags: [objc,runtime]
 ---
 <pre><code class="objective-c">
-/* Types */
+
 
 /// An opaque type that represents a method in a class definition.  
 typedef struct objc_method *Method;//objc_method结构体指针
