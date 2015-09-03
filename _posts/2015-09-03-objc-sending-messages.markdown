@@ -43,10 +43,10 @@ Note: 编译器完成对objc\_msgSend方法的转换, 请不要在代码里直�
 ```
 int main(int argc, const char * argv[]) {
 
-id obj = objc_msgSend(objc_msgSend([NSNumber class], @selector(alloc)), @selector(initWithInteger:), 123);
-id obj1;
-NSLog(@"obj = %@, obj is a %@, %@", obj, [obj class], obj1);
-return 0;
+    id obj = objc_msgSend(objc_msgSend([NSNumber class], @selector(alloc)), @selector(initWithInteger:), 123);
+    id obj1;
+    NSLog(@"obj = %@, obj is a %@, %@", obj, [obj class], obj1);
+    return 0;
 }
 ```
 
