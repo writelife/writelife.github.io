@@ -4,7 +4,7 @@ category: "objc"
 title:  "objc之runtime源码分析"
 tags: [objc,runtime]
 ---
-<pre><code class="Objective C">
+<pre><code class="objective-c">
 /* Types */
 
 /// An opaque type that represents a method in a class definition.  
