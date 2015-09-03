@@ -4,7 +4,7 @@ category: "objc"
 title:  "Objective-C消息机制的原理"
 tags: [objc,消息机制]
 ---
-在Objective-C中，message与方法的真正实现是在执行阶段绑定的，而非编译阶段。编译器将消息表达式转换成对消息发送方法的调用,即对objc_msgSend方法的调用.
+在Objective-C中，message与方法的真正实现是在执行阶段绑定的，而非编译阶段。编译器将消息表达式转换成对消息发送方法的调用,即对objc_msgSend方法的调用.  
 ```
 objc_msgSend方法包含两个主要参数：receiver, 选择器即(SEL) selector，如:  
 [receiver message]; 将被转换为：objc_msgSend(receiver, selector);
