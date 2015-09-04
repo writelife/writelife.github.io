@@ -32,7 +32,7 @@ Note: 编译器完成对objc\_msgSend方法的转换, 请不要在代码里直�
 ![](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Art/messaging1.gif)
 </center>
 
-当向一个对象发送消息时，objc_msgSend方法根据对象的isa指针找到对象的类，然后在类的调度表（dispatch table）中查找selector。如果无法找到selector，objc_msgSend通过指向父类的指针找到父类，并在父类的调度表（dispatch table）中查找selector，以此类推直到NSObject类。一旦查找到selector，objc_msgSend方法根据调度表的内存地址调用该实现。 通过这种方式，message与方法的真正实现在执行阶段才绑定。
+当向一个对象发送消息时，objc\_msgSend方法根据对象的isa指针找到对象的类，然后在类的调度表（dispatch table）中查找selector。如果无法找到selector，obj\c_msgSend通过指向父类的指针找到父类，并在父类的调度表（dispatch table）中查找selector，以此类推直到NSObject类。一旦查找到selector，objc\_msgSend方法根据调度表的内存地址调用该实现。 通过这种方式，message与方法的真正实现在执行阶段才绑定。
 
 为了保证消息发送与执行的效率，系统会将全部selector和使用过的方法的内存地址缓存起来。每个类都有一个独立的缓存，缓存包含有当前类自己的 selector以及继承自父类的selector。查找调度表（dispatch table）前，消息发送系统首先检查receiver对象的缓存。
 缓存命中的情况下，消息发送（messaging）比直接调用方法（function call）只慢一点点。
