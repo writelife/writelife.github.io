@@ -70,14 +70,15 @@ nil本质上也是：(void *)0
 在MRC下使用__strong, __unsafe_unretained, __autoreleasing
 
 /** 
-* Returns the name of the method specified by a given selector.返回一个指定选择器的名字
+* Returns the name of the method specified by a given selector.
 * 
 * @param sel A pointer of type \c SEL. Pass the selector whose name you wish to determine.
 * 
-* @return A C string indicating the name of the selector. 返回值类型为C的字符串
+* @return A C string indicating the name of the selector. 
 */
 OBJC_EXPORT const char *sel_getName(SEL sel)
 __OSX_AVAILABLE_STARTING(__MAC_10_0, __IPHONE_2_0);
+//返回一个指定选择器的名字,返回值类型为C的字符串
 
 在objc-api.h查看对OBJC_EXPORT的定义
 #define OBJC_VISIBLE  __attribute__((visibility("default"))) //动态库中的函数可见
@@ -86,18 +87,19 @@ __OSX_AVAILABLE_STARTING(__MAC_10_0, __IPHONE_2_0);
 
 /** 
 * Registers a method with the Objective-C runtime system, maps the method 
-* name to a selector, and returns the selector value. 在oc运行时注册一个方法,将方法名映射到一个选择器,并且返回选择器的值
+* name to a selector, and returns the selector value. 
 * 
-* @param str A pointer to a C string. Pass the name of the method you wish to register. 参数str为一个指向C字符串的指针
+* @param str A pointer to a C string. Pass the name of the method you wish to register. 
 * 
-* @return A pointer of type SEL specifying the selector for the named method.返回值类型为SEL类型
+* @return A pointer of type SEL specifying the selector for the named method.
 * 
 * @note You must register a method name with the Objective-C runtime system to obtain the
 *  method’s selector before you can add the method to a class definition. If the method name
-*  has already been registered, this function simply returns the selector.必须在加入类定义之前,先在运行时注册方法名来获得方法选择器,如果方法名已经存在,则返回此方法选择器
+*  has already been registered, this function simply returns the selector.
 */
 OBJC_EXPORT SEL sel_registerName(const char *str)
 __OSX_AVAILABLE_STARTING(__MAC_10_0, __IPHONE_2_0);
+//在oc运行时注册一个方法,将方法名映射到一个选择器,并且返回选择器的值,参数str为一个指向C字符串的指针,返回值类型为SEL类型,必须在加入类定义之前,先在运行时注册方法名来获得方法选择器,如果方法名已经存在,则返回此方法选择器
 
 /** 
 * Returns the class name of a given object.
