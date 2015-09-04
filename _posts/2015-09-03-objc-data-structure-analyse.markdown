@@ -161,8 +161,6 @@ __OSX_AVAILABLE_STARTING(__MAC_10_0, __IPHONE_2_0);
 OBJC_EXPORT SEL sel_getUid(const char *str)
 __OSX_AVAILABLE_STARTING(__MAC_10_0, __IPHONE_2_0);
 //sel_getUid与sel_registerName的实现完全相同
-
-
 ```
  
 
