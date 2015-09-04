@@ -6,7 +6,7 @@ tags: [objc,runtime]
 ---
 ```
 /// An opaque type that represents an Objective-C class.
-typedef struct objc_class *Class;//objc_class结构体指针
+typedef struct objc_class *Class;
 
 struct objc_class {
 Class isa;
