@@ -43,6 +43,7 @@ return self;
 
 更灵巧一点的做法
 
+```
 @interface Foo : NSObject <NSCoding>
 
 @property (nonatomic, assign) NSInteger property1;
