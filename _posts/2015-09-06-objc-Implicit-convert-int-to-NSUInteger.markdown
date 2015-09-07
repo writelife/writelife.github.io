@@ -7,7 +7,7 @@ tags: [objc, Foreach, Loop, implicit convert]
 
 对于以下代码:
 
-```
+```c
 for (int i = -1; i < 3; i++) {
 NSLog(@"%d", i);
 }
