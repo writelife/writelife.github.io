@@ -7,17 +7,17 @@ tags: [objc,runtime]
 objc.h源码分析  
 
 
-```
+{% highlight objc %}
 /// An opaque type that represents an Objective-C class.
 typedef struct objc_class *Class;
 
 struct objc_class {
-Class isa;
+    Class isa;
 } OBJC2_UNAVAILABLE;
 
 /// Represents an instance of a class.
 struct objc_object {
-Class isa  OBJC_ISA_AVAILABILITY;
+    Class isa  OBJC_ISA_AVAILABILITY;
 };
 
 /// A pointer to an instance of a class.
@@ -163,7 +163,7 @@ __OSX_AVAILABLE_STARTING(__MAC_10_0, __IPHONE_2_0);
 OBJC_EXPORT SEL sel_getUid(const char *str)
 __OSX_AVAILABLE_STARTING(__MAC_10_0, __IPHONE_2_0);
 //sel_getUid与sel_registerName的实现完全相同
-```
+{% endhighlight %}
  
 
 
