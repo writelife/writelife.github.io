@@ -19,23 +19,23 @@ tags: [objc, NSCoding, runtime, NSKeyedArchiver]
 
 - (id)initWithCoder:(NSCoder *)coder
 {
-if ((self = [super init]))
-{
-// Decode the property values by key, 
-// and assign them to the correct ivars
-_property1 = [coder decodeIntegerForKey:@"property1"];
-_property2 = [coder decodeBoolForKey:@"property2"];
-_property3 = [coder decodeObjectForKey:@"property3"];
-}
-return self;
+    if ((self = [super init]))
+    {
+    // Decode the property values by key, 
+    // and assign them to the correct ivars
+        _property1 = [coder decodeIntegerForKey:@"property1"];
+        _property2 = [coder decodeBoolForKey:@"property2"];
+        _property3 = [coder decodeObjectForKey:@"property3"];
+    }
+    return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder
 {
 // Encode our ivars using string keys
-[coder encodeInteger:_property1 forKey:@"property1"];
-[coder encodeBool:_property2 forKey:@"property2"];
-[coder encodeObject:_property3 forKey:@"property3"];
+    [coder encodeInteger:_property1 forKey:@"property1"];
+    [coder encodeBool:_property2 forKey:@"property2"];
+    [coder encodeObject:_property3 forKey:@"property3"];
 }
 
 @end
@@ -57,33 +57,33 @@ return self;
 
 - (NSArray *)propertyNames
 {
-return @[@"property1", @"property2", @"property3"];
+    return @[@"property1", @"property2", @"property3"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-if ((self = [self init]))
-{
-// Loop through the properties
-for (NSString *key in [self propertyNames])
-{
-// Decode the property, and use the KVC setValueForKey: method to set it
-id value = [aDecoder decodeObjectForKey:key];
-[self setValue:value forKey:key];
-}
-}
-return self;
+    if ((self = [self init]))
+    {
+        // Loop through the properties
+        for (NSString *key in [self propertyNames])
+        {
+            // Decode the property, and use the KVC setValueForKey: method to set it
+            id value = [aDecoder decodeObjectForKey:key];
+            [self setValue:value forKey:key];
+        }
+    }
+    return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-// Loop through the properties
-for (NSString *key in [self propertyNames])
-{
-// Use the KVC valueForKey: method to get the property and then encode it
-id value = [self valueForKey:key];
-[aCoder encodeObject:value forKey:key];
-}
+    // Loop through the properties
+    for (NSString *key in [self propertyNames])
+    {
+        // Use the KVC valueForKey: method to get the property and then encode it
+        id value = [self valueForKey:key];
+        [aCoder encodeObject:value forKey:key];
+    }
 }
 
 @end
@@ -105,19 +105,19 @@ objc_property_t *properties = class_copyPropertyList([self class],
 NSMutableArray *array = [NSMutableArray arrayWithCapacity:propertyCount];
 for (int i = 0; i < propertyCount; i++)
 {
-// Get property name
-objc_property_t property = properties[i];
-const char *propertyName = property_getName(property);
-NSString *key = @(propertyName);
+    // Get property name
+    objc_property_t property = properties[i];
+    const char *propertyName = property_getName(property);
+    NSString *key = @(propertyName);
 
-// Add to array
-[array addObject:key];
-}
+    // Add to array
+    [array addObject:key];
+    }
 
-// Remember to free the list because ARC doesn't do that for us
-free(properties);
+    // Remember to free the list because ARC doesn't do that for us
+    free(properties);
 
-return array;
+    return array;
 }
 
 {% endhighlight %}
@@ -126,52 +126,52 @@ return array;
 {% highlight objc %}
 - (NSArray *)propertyNames
 {
-// Check for a cached value (we use _cmd as the cache key, 
-// which represents @selector(propertyNames))
-NSMutableArray *array = objc_getAssociatedObject([self class], _cmd);
-if (array)
-{
-return array;
-}
+    // Check for a cached value (we use _cmd as the cache key, 
+    // which represents @selector(propertyNames))
+    NSMutableArray *array = objc_getAssociatedObject([self class], _cmd);
+    if (array)
+    {
+        return array;
+    }
 
-// Loop through our superclasses until we hit NSObject
-array = [NSMutableArray array];
-Class subclass = [self class];
-while (subclass != [NSObject class])
-{
-unsigned int propertyCount;
-objc_property_t *properties = class_copyPropertyList(subclass, 
-&propertyCount);
-for (int i = 0; i < propertyCount; i++)
-{
-// Get property name
-objc_property_t property = properties[i];
-const char *propertyName = property_getName(property);
-NSString *key = @(propertyName);
+    // Loop through our superclasses until we hit NSObject
+    array = [NSMutableArray array];
+    Class subclass = [self class];
+    while (subclass != [NSObject class])
+    {
+        unsigned int propertyCount;
+        objc_property_t *properties = class_copyPropertyList(subclass, 
+        &propertyCount);
+        for (int i = 0; i < propertyCount; i++)
+        {
+            // Get property name
+            objc_property_t property = properties[i];
+            const char *propertyName = property_getName(property);
+            NSString *key = @(propertyName);
 
-// Check if there is a backing ivar
-char *ivar = property_copyAttributeValue(property, "V");
-if (ivar)
-{
-// Check if ivar has KVC-compliant name
-NSString *ivarName = @(ivar);
-if ([ivarName isEqualToString:key] || 
-[ivarName isEqualToString:[@"_" stringByAppendingString:key]])
-{
-// setValue:forKey: will work
-[array addObject:key];
-}
-free(ivar);
-}
-}
-free(properties);
-subclass = [subclass superclass];
-}
+            // Check if there is a backing ivar
+            char *ivar = property_copyAttributeValue(property, "V");
+            if (ivar)
+            {
+                // Check if ivar has KVC-compliant name
+                NSString *ivarName = @(ivar);
+                if ([ivarName isEqualToString:key] || 
+                [ivarName isEqualToString:[@"_" stringByAppendingString:key]])
+                {
+                    // setValue:forKey: will work
+                    [array addObject:key];
+                }
+            free(ivar);
+            }
+        }
+        free(properties);
+        subclass = [subclass superclass];
+    }
 
-// Cache and return array
-objc_setAssociatedObject([self class], _cmd, array, 
-OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-return array;
+    // Cache and return array
+    objc_setAssociatedObject([self class], _cmd, array, 
+    OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    return array;
 }
 
 {% endhighlight %}
