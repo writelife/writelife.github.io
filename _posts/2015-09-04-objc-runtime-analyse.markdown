@@ -6,7 +6,7 @@ tags: [objc,runtime]
 ---
 runtime.h源码分析
 
-```
+{% highlight objc %}
 /// An opaque type that represents a method in a class definition.
 typedef struct objc_method *Method;
 
@@ -22,19 +22,19 @@ typedef struct objc_property *objc_property_t;
 //可以看出,struct objc_method, struct objc_ivar, struct objc_category, struct objc_property这4种结构体类型都没有完整定义,不能直接使用,只能直接使用Method, Ivar, Category, objc_property_t
 
 struct objc_class {
-Class isa  OBJC_ISA_AVAILABILITY;
+    Class isa  OBJC_ISA_AVAILABILITY;
 
-#if !__OBJC2__
-Class super_class                                        OBJC2_UNAVAILABLE;
-const char *name                                         OBJC2_UNAVAILABLE;
-long version                                             OBJC2_UNAVAILABLE;
-long info                                                OBJC2_UNAVAILABLE;
-long instance_size                                       OBJC2_UNAVAILABLE;
-struct objc_ivar_list *ivars                             OBJC2_UNAVAILABLE;
-struct objc_method_list **methodLists                    OBJC2_UNAVAILABLE;
-struct objc_cache *cache                                 OBJC2_UNAVAILABLE;
-struct objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;
-#endif
+    #if !__OBJC2__
+    Class super_class                                        OBJC2_UNAVAILABLE;
+    const char *name                                         OBJC2_UNAVAILABLE;
+    long version                                             OBJC2_UNAVAILABLE;
+    long info                                                OBJC2_UNAVAILABLE;
+    long instance_size                                       OBJC2_UNAVAILABLE;
+    struct objc_ivar_list *ivars                             OBJC2_UNAVAILABLE;
+    struct objc_method_list **methodLists                    OBJC2_UNAVAILABLE;
+    struct objc_cache *cache                                 OBJC2_UNAVAILABLE;
+    struct objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;
+    #endif
 
 } OBJC2_UNAVAILABLE;
 /* Use `Class` instead of `struct objc_class *` */
@@ -49,14 +49,14 @@ typedef struct objc_object Protocol;
 
 /// Defines a method
 struct objc_method_description {
-SEL name;               /**< The name of the method */
-char *types;            /**< The types of the method arguments */
+    SEL name;               /**< The name of the method */
+    char *types;            /**< The types of the method arguments */
 };
 
 /// Defines a property attribute
 typedef struct {
-const char *name;           /**< The name of the attribute */
-const char *value;          /**< The value of the attribute (usually empty) */
+    const char *name;           /**< The name of the attribute */
+    const char *value;          /**< The value of the attribute (usually empty) */
 } objc_property_attribute_t;
 
 /* Functions */
@@ -1616,72 +1616,72 @@ __OSX_AVAILABLE_STARTING(__MAC_10_6, __IPHONE_3_1);
 
 
 struct objc_method_description_list {
-int count;
-struct objc_method_description list[1];
+    int count;
+    struct objc_method_description list[1];
 };
 
 
 struct objc_protocol_list {
-struct objc_protocol_list *next;
-long count;
-Protocol *list[1];
+    struct objc_protocol_list *next;
+    long count;
+    Protocol *list[1];
 };
 
 
 struct objc_category {
-char *category_name                                      OBJC2_UNAVAILABLE;
-char *class_name                                         OBJC2_UNAVAILABLE;
-struct objc_method_list *instance_methods                OBJC2_UNAVAILABLE;
-struct objc_method_list *class_methods                   OBJC2_UNAVAILABLE;
-struct objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;
+    char *category_name                                      OBJC2_UNAVAILABLE;
+    char *class_name                                         OBJC2_UNAVAILABLE;
+    struct objc_method_list *instance_methods                OBJC2_UNAVAILABLE;
+    struct objc_method_list *class_methods                   OBJC2_UNAVAILABLE;
+    struct objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;
 }                                                            OBJC2_UNAVAILABLE;
 
 
 struct objc_ivar {
-char *ivar_name                                          OBJC2_UNAVAILABLE;
-char *ivar_type                                          OBJC2_UNAVAILABLE;
-int ivar_offset                                          OBJC2_UNAVAILABLE;
-#ifdef __LP64__
-int space                                                OBJC2_UNAVAILABLE;
-#endif
+    char *ivar_name                                          OBJC2_UNAVAILABLE;
+    char *ivar_type                                          OBJC2_UNAVAILABLE;
+    int ivar_offset                                          OBJC2_UNAVAILABLE;
+    #ifdef __LP64__
+    int space                                                OBJC2_UNAVAILABLE;
+    #endif
 }                                                            OBJC2_UNAVAILABLE;
 
 struct objc_ivar_list {
-int ivar_count                                           OBJC2_UNAVAILABLE;
-#ifdef __LP64__
-int space                                                OBJC2_UNAVAILABLE;
-#endif
-/* variable length structure */
-struct objc_ivar ivar_list[1]                            OBJC2_UNAVAILABLE;
+    int ivar_count                                           OBJC2_UNAVAILABLE;
+    #ifdef __LP64__
+    int space                                                OBJC2_UNAVAILABLE;
+    #endif
+    /* variable length structure */
+    struct objc_ivar ivar_list[1]                            OBJC2_UNAVAILABLE;
 }                                                            OBJC2_UNAVAILABLE;
 
 
 struct objc_method {
-SEL method_name                                          OBJC2_UNAVAILABLE;
-char *method_types                                       OBJC2_UNAVAILABLE;
-IMP method_imp                                           OBJC2_UNAVAILABLE;
+    SEL method_name                                          OBJC2_UNAVAILABLE;
+    char *method_types                                       OBJC2_UNAVAILABLE;
+    IMP method_imp                                           OBJC2_UNAVAILABLE;
 }                                                            OBJC2_UNAVAILABLE;
 
 struct objc_method_list {
-struct objc_method_list *obsolete                        OBJC2_UNAVAILABLE;
+    struct objc_method_list *obsolete                        OBJC2_UNAVAILABLE;
 
-int method_count                                         OBJC2_UNAVAILABLE;
-#ifdef __LP64__
-int space                                                OBJC2_UNAVAILABLE;
-#endif
-/* variable length structure */
-struct objc_method method_list[1]                        OBJC2_UNAVAILABLE;
+    int method_count                                         OBJC2_UNAVAILABLE;
+    #ifdef __LP64__
+    int space                                                OBJC2_UNAVAILABLE;
+    #endif
+    /* variable length structure */
+    struct objc_method method_list[1]                        OBJC2_UNAVAILABLE;
 }                                                            OBJC2_UNAVAILABLE;
 
 
 typedef struct objc_symtab *Symtab                           OBJC2_UNAVAILABLE;
 
 struct objc_symtab {
-unsigned long sel_ref_cnt                                OBJC2_UNAVAILABLE;
-SEL *refs                                                OBJC2_UNAVAILABLE;
-unsigned short cls_def_cnt                               OBJC2_UNAVAILABLE;
-unsigned short cat_def_cnt                               OBJC2_UNAVAILABLE;
-void *defs[1] /* variable size */                        OBJC2_UNAVAILABLE;
+    unsigned long sel_ref_cnt                                OBJC2_UNAVAILABLE;
+    SEL *refs                                                OBJC2_UNAVAILABLE;
+    unsigned short cls_def_cnt                               OBJC2_UNAVAILABLE;
+    unsigned short cat_def_cnt                               OBJC2_UNAVAILABLE;
+    void *defs[1] /* variable size */                        OBJC2_UNAVAILABLE;
 }                                                            OBJC2_UNAVAILABLE;
 
 
@@ -1696,19 +1696,19 @@ typedef struct objc_cache *Cache                             OBJC2_UNAVAILABLE;
 #define CACHE_HASH(sel, mask) (((unsigned int)((uintptr_t)(sel)>>3)) & (mask))
 #endif
 struct objc_cache {
-unsigned int mask /* total = mask + 1 */                 OBJC2_UNAVAILABLE;
-unsigned int occupied                                    OBJC2_UNAVAILABLE;
-Method buckets[1]                                        OBJC2_UNAVAILABLE;
+    unsigned int mask /* total = mask + 1 */                 OBJC2_UNAVAILABLE;
+    unsigned int occupied                                    OBJC2_UNAVAILABLE;
+    Method buckets[1]                                        OBJC2_UNAVAILABLE;
 };
 
 
 typedef struct objc_module *Module                           OBJC2_UNAVAILABLE;
 
 struct objc_module {
-unsigned long version                                    OBJC2_UNAVAILABLE;
-unsigned long size                                       OBJC2_UNAVAILABLE;
-const char *name                                         OBJC2_UNAVAILABLE;
-Symtab symtab                                            OBJC2_UNAVAILABLE;
+    unsigned long version                                    OBJC2_UNAVAILABLE;
+    unsigned long size                                       OBJC2_UNAVAILABLE;
+    const char *name                                         OBJC2_UNAVAILABLE;
+    Symtab symtab                                            OBJC2_UNAVAILABLE;
 }                                                            OBJC2_UNAVAILABLE;
 
 #else
@@ -1773,7 +1773,7 @@ OBJC_EXPORT void (*_error)(id, const char *, va_list)        OBJC2_UNAVAILABLE;
 
 #endif
 
-```
+{% endhighlight %}
 
 
 
