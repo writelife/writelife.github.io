@@ -1,23 +1,8 @@
 markdown: rdiscount
-permalink: /:categories/:title.html
-url: 
-lsi: false
+permalink: /:year/:month/:day/:title/
+url: http://blog.nswebfrog.com
+author: webfrogs
 pygments: true
 safe: true
-auto: false 
-
-paginate: 8
-paginate_path: "page:num"
-
-# presonal config
-domain: writelife.github.io
-title: Writelife’s Blog
-description: iOS, C, C++, OC, reading...
-author: Adair Teng
-email: 95681120@qq.com
-github: writelife
-
-config:
-  js_dir:
-  img_dir:
-  css_dir:
+paginate: 16
+auto: true
