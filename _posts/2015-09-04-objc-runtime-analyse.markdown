@@ -6,7 +6,7 @@ tags: [objc,runtime]
 ---
 runtime.h源码分析
 
-{% highlight objc %}
+{% highlight objc linenos%}
 /// An opaque type that represents a method in a class definition.
 typedef struct objc_method *Method;
 

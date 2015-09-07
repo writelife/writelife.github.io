@@ -6,7 +6,7 @@ tags: [objc, NSCoding, runtime, NSKeyedArchiver]
 ---
 最基本的做法
 
-{% highlight objc %}
+{% highlight objc linenos%}
 @interface Foo : NSObject <NSCoding>
 
 @property (nonatomic, assign) NSInteger property1;
@@ -43,7 +43,7 @@ tags: [objc, NSCoding, runtime, NSKeyedArchiver]
 
 更灵巧一点的做法
 
-{% highlight objc %}
+{% highlight objc linenos%}
 @interface Foo : NSObject <NSCoding>
 
 @property (nonatomic, assign) NSInteger property1;
@@ -92,7 +92,7 @@ tags: [objc, NSCoding, runtime, NSKeyedArchiver]
 更高级的做法,使用objc的内省机制
 只需要重写上面的propertyNames方法,代码如下:
 
-{% highlight objc %}
+{% highlight objc linenos%}
 // Import the Objective-C runtime headers
 #import <objc/runtime.h> 
 
@@ -123,7 +123,7 @@ for (int i = 0; i < propertyCount; i++)
 {% endhighlight %}
 使用这种方法有个缺点,只能对当前类中定义的属性进行解编码,而不能对从父类继承而来的属性,实例变量进行解编码,让我们进一步改进,重写propertyNames方法,代码如下:
 
-{% highlight objc %}
+{% highlight objc linenos%}
 - (NSArray *)propertyNames
 {
     // Check for a cached value (we use _cmd as the cache key, 

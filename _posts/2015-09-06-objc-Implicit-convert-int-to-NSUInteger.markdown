@@ -16,7 +16,7 @@ for (int i = -1; i < 3; i++) {
 
 那么对于以下代码,大家就得注意一下:
 
-{% highlight objc %}
+{% highlight objc linenos%}
 NSArray *Array = @[@1, @2, @3];
 for (int i = -1; i < Array.count; i++) {
     NSLog(@"%d", i);

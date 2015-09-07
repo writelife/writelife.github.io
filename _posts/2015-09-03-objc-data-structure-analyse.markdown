@@ -7,7 +7,7 @@ tags: [objc,runtime]
 objc.h源码分析  
 
 
-{% highlight objc %}
+{% highlight objc linenos%}
 /// An opaque type that represents an Objective-C class.
 typedef struct objc_class *Class;
 
