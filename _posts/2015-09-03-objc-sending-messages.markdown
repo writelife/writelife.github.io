@@ -38,9 +38,10 @@ Note: 编译器完成对objc\_msgSend方法的转换, 请不要在代码里直�
 缓存命中的情况下，消息发送（messaging）比直接调用方法（function call）只慢一点点。
 
 下面就显式使用objc_msgSend来验证一下,代码如下:  
+{% highlight objc %}
 \#import \<Foundation/Foundation.h\>
 
-```
+
 int main(int argc, const char * argv[]) {
 
     id obj = objc_msgSend(objc_msgSend([NSNumber class], @selector(alloc)), @selector(initWithInteger:), 123);
@@ -48,7 +49,7 @@ int main(int argc, const char * argv[]) {
     NSLog(@"obj = %@, obj is a %@, %@", obj, [obj class], obj1);
     return 0;
 }
-```
+{% endhighlight %}
 
 运行结果:  
 obj = 123, obj is a __NSCFNumber, (null)
@@ -57,7 +58,7 @@ obj = 123, obj is a __NSCFNumber, (null)
 
 接下来还是分析下message.h的源码吧
 
-```
+{% highlight objc %}
 struct objc_super {
 /// Specifies an instance of a class.
 __unsafe_unretained id receiver;
@@ -266,7 +267,7 @@ OBJC_EXPORT void objc_msgSendv_stret(void *stretAddr, id self, SEL op, size_t ar
 #if defined(__i386__)
 OBJC_EXPORT double objc_msgSendv_fpret(id self, SEL op, unsigned arg_size, marg_list arg_frame) OBJC2_UNAVAILABLE;
 #endif
-```
+{% endhighlight %}
 
 
 
