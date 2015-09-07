@@ -39,7 +39,7 @@ Note: 编译器完成对objc\_msgSend方法的转换, 请不要在代码里直�
 
 下面就显式使用objc_msgSend来验证一下,代码如下:  
 {% highlight objc %}
-\#import \<Foundation/Foundation.h\>
+#import <Foundation/Foundation.h>
 
 
 int main(int argc, const char * argv[]) {
